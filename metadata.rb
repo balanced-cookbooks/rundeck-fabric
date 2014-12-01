@@ -17,7 +17,7 @@
 #
 
 name 'rundeck-fabric'
-version '1.0.0'
+version '1.0.2'
 
 maintainer 'Noah Kantrowitz'
 maintainer_email 'noah@coderanger.net'
@@ -27,4 +27,4 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 
 depends 'git'
 depends 'python'
-depends 'rundeck', '~> 99.1.2'
+depends 'rundeck', '~> 99.1'

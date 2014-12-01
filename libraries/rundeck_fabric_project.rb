@@ -123,7 +123,7 @@ class Chef
 
     def parse_fabric_tasks
       python = ::File.join(new_resource.fabric_virtualenv_path, 'bin', 'python')
-      cmd = shell_out!([python, '-m', 'fabric_rundeck'], cwd: new_resource.fabric_path, user: 'root', group: 'root')
+      cmd = shell_out!([python, '-m', 'fabric_rundeck'], cwd: new_resource.fabric_path, user: 'root', group: 'root', env: {'HOME' => '/root'})
       Chef::JSONCompat.from_json(cmd.stdout, create_additions: false)
     end
 
