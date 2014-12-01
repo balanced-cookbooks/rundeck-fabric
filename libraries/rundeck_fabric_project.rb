@@ -137,8 +137,12 @@ class Chef
     end
 
     def create_fabric_jobs
-      parse_fabric_tasks.each do |task|
+      extracted_fab_tasks = parse_fabric_tasks
+      Chef::Log.debug("Extracted Fabric Tasks: #{extracted_fab_tasks}")
+      extracted_fab_tasks.each do |task|
+        Chef::Log.debug("Processing task: #{task}")
         yaml = task_to_yaml(task)
+        Chef::Log.debug("Converted task to yaml: #{yaml}, proceeding to create a rundeck_job")
         rundeck_job task['name'] do
           parent new_resource
           content yaml
